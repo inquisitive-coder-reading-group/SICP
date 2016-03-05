@@ -6,6 +6,10 @@ Exercise 1.4: Observe that our model of evaluation allows for combinations whose
 
 */
 
+func aPlusAbsB(a: Int, b: Int) -> Int {
+    return a + abs(b)
+}
+
 /**
 *  An `if` conditional returns an addition operator if b
 *  is greater than zero, otherwise it returns a subtraction 
