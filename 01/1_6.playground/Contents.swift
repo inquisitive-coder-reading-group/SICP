@@ -54,7 +54,7 @@ func goodEnough(guess: Double, x: Double) -> Bool {
  - returns: a new guess as to the square root of x.
  */
 func improve(guess: Double, x: Double) -> Double {
-    return (guess + (guess / x)) / 2.0
+    return (guess + (x / guess)) / 2.0
 }
 
 /**
