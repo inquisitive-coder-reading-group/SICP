@@ -6,7 +6,7 @@ Exercise 1.4: Observe that our model of evaluation allows for combinations whose
 
 */
 
-func aPlusAbsB(a: Int, b: Int) -> Int {
+func aPlusAbsB<T: IntegerArithmeticType where T: SignedNumberType>(a: T, b: T) -> T {
     return a + abs(b)
 }
 
