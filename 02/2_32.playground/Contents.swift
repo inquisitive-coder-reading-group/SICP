@@ -32,7 +32,7 @@ enum List<T> {
     func subsets() -> List<List<T>>{
         switch self {
         case .Empty:
-            return .Empty
+            return .Cons(.Empty, .Empty)
         case .Cons(let first, let rest):
             // This next line is the real answer to the exercise: it is the closure that should replace
             // (??) in the original question. Everything else is Swift boilerplate!
