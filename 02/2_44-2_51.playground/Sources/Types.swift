@@ -21,7 +21,9 @@ public struct Vector {
 }
 
 public struct Frame {
+    // "...the offset of the frame’s origin from some absolute origin in the plane"
     public let origin: Vector
+    // "...the offsets of the frame’s corners from its origin"
     public let edge1: Vector
     public let edge2: Vector
     
@@ -31,6 +33,7 @@ public struct Frame {
         self.edge2 = edge2
     }
     
+    // Maps a vector whose coordinates are in the unit square to the coordinate system of the frame. For example, (0, 0) is mapped to the origin of the frame, (1, 1) to the vertex diagonally opposite the origin, and (0.5, 0.5) to the center of the frame.
     public func map(vector: Vector) -> Vector {
         let scale1 = edge1.scale(vector.x)
         let scale2 = edge2.scale(vector.y)
@@ -42,7 +45,9 @@ public struct Frame {
 }
 
 public struct Segment {
+    // "...the vector running from the origin to the start-point of the segment"
     public let start: Vector
+    // "...the vector running from the origin to the end-point of the segment"
     public let end: Vector
     
     public init(_ start: Vector, _ end: Vector) {

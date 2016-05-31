@@ -7,6 +7,10 @@ PainterView(painter: trianglePainter)
 
 //: ## Exercise 2.44
 //: Define the procedure `up-split` used by `corner-split`. It is similar to `right-split`, except that it switches the roles of `below` and `beside`.
+// rightSplit
+PainterView(painter: rightSplit(trianglePainter, n: 4))
+
+// upSplit
 func upSplit1(painter: Painter, n: Int) -> Painter {
     if n == 0 {
         return painter
@@ -27,31 +31,37 @@ PainterView(painter: upSplit1(trianglePainter, n: 4))
 //: `Right-split` and `up-split` can be expressed as instances of a general splitting operation. Define a procedure `split` with the property that evaluating
 //: ```
 //: (define right-split (split beside below))
-//: (define up-split (split below beside))`
+//: (define up-split (split below beside))
 //: ```
 //: produces procedures `right-split` and `up-split` with the same behaviors as the ones already defined.
-func split(painter: Painter, t1: PainterCombiner, t2: PainterCombiner, n: Int) -> Painter {
+func split(painter: Painter, combiner1 c1: PainterCombiner, combiner2 c2: PainterCombiner, n: Int) -> Painter {
     if n == 0 {
         return painter
     }
     else {
-        let small = split(painter, t1: t1, t2: t2, n: n - 1)
-        return t1(
+        let small = split(painter, combiner1: c1, combiner2: c2, n: n - 1)
+        return c1(
             painter,
-            t2(
+            c2(
                 small,
                 small))
     }
 }
 
 func rightSplit2(painter: Painter, n: Int) -> Painter {
-    return split(painter, t1: beside, t2: below, n: n)
+    return split(painter, combiner1: beside, combiner2: below, n: n)
 }
 
 PainterView(painter: rightSplit2(trianglePainter, n: 4))
 
+func flip(combiner: PainterCombiner) -> PainterCombiner {
+    return {
+        combiner($1, $0)
+    }
+}
+
 func upSplit2(painter: Painter, n: Int) -> Painter {
-    return split(painter, t1: below, t2: beside, n: n)
+    return split(painter, combiner1: flip(below), combiner2: beside, n: n)
 }
 
 PainterView(painter: upSplit2(trianglePainter, n: 4))
@@ -59,6 +69,18 @@ PainterView(painter: upSplit2(trianglePainter, n: 4))
 //: ## Exercise 2.46
 //: A two-dimensional vector `v` running from the origin to a point can be represented as a pair consisting of an `x`-coordinate and a `y`- -coordinate. Implement a data abstraction for vectors by giving a constructor make-vect and corresponding selectors `xcor-vect` and `ycor-vect`. In terms of your selectors and constructor, implement procedures `add-vect`, `sub-vect`, and `scale-vect` that perform the operations vector addition, vector subtraction, and multiplying a vector by a scalar.
 // See Types.swift
+
+//: ## Exercise 2.47
+//: Here are two possible constructors for frames:
+//: ```
+//: (define (make-frame origin edge1 edge2)
+//:   (list origin edge1 edge2))
+//:
+//: (define (make-frame origin edge1 edge2)
+//:   (cons origin (cons edge1 edge2)))
+//: ```
+//: For each constructor supply the appropriate selectors to produce an implementation for frames.”
+// Skipped because not relevant in Swift.
 
 //: ## Exercise 2.48
 //: A directed line segment in the plane can be represented as a pair of vectors—the vector running from the origin to the start-point of the segment, and the vector running from the origin to the end-point of the segment. Use your vector representation from Exercise 2.46 to define a representation for segments with a constructor `make-segment` and selectors `start-segment` and `end-segment`.
