@@ -17,11 +17,11 @@ func upSplit1(painter: Painter, n: Int) -> Painter {
     }
     else {
         let small = upSplit1(painter, n: n - 1)
-        return below(
-            top: beside(
-                left: small,
-                right: small),
-            bottom: painter)
+        
+        let top = beside(left: small, right: small)
+        let bottom = painter
+        
+        return below(top: top, bottom: bottom)
     }
 }
 
@@ -67,7 +67,7 @@ func upSplit2(painter: Painter, n: Int) -> Painter {
 PainterView(painter: upSplit2(trianglePainter, n: 4))
 
 //: ## Exercise 2.46
-//: A two-dimensional vector `v` running from the origin to a point can be represented as a pair consisting of an `x`-coordinate and a `y`- -coordinate. Implement a data abstraction for vectors by giving a constructor make-vect and corresponding selectors `xcor-vect` and `ycor-vect`. In terms of your selectors and constructor, implement procedures `add-vect`, `sub-vect`, and `scale-vect` that perform the operations vector addition, vector subtraction, and multiplying a vector by a scalar.
+//: A two-dimensional vector `v` running from the origin to a point can be represented as a pair consisting of an `x`-coordinate and a `y`-coordinate. Implement a data abstraction for vectors by giving a constructor make-vect and corresponding selectors `xcor-vect` and `ycor-vect`. In terms of your selectors and constructor, implement procedures `add-vect`, `sub-vect`, and `scale-vect` that perform the operations vector addition, vector subtraction, and multiplying a vector by a scalar.
 // See Types.swift
 
 //: ## Exercise 2.47
@@ -79,7 +79,7 @@ PainterView(painter: upSplit2(trianglePainter, n: 4))
 //: (define (make-frame origin edge1 edge2)
 //:   (cons origin (cons edge1 edge2)))
 //: ```
-//: For each constructor supply the appropriate selectors to produce an implementation for frames.”
+//: For each constructor supply the appropriate selectors to produce an implementation for frames.
 // Skipped because not relevant in Swift.
 
 //: ## Exercise 2.48
