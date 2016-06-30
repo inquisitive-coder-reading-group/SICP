@@ -8,9 +8,6 @@
          location = "group:01"
          name = "01">
          <FileRef
-            location = "group:1_1.playground">
-         </FileRef>
-         <FileRef
             location = "group:1_10.playground">
          </FileRef>
          <FileRef
@@ -60,13 +57,7 @@
             location = "group:2_29.playground">
          </FileRef>
          <FileRef
-            location = "group:2_31.playground">
-         </FileRef>
-         <FileRef
             location = "group:2_32.playground">
-         </FileRef>
-         <FileRef
-            location = "group:2_33.playground">
          </FileRef>
          <FileRef
             location = "group:2_4.playground">
@@ -76,9 +67,6 @@
          </FileRef>
          <FileRef
             location = "group:2_59.playground">
-         </FileRef>
-         <FileRef
-            location = "group:2_61.playground">
          </FileRef>
       </Group>
    </Group>
