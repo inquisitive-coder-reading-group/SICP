@@ -1,7 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:Playgrounds"
+      name = "Playgrounds">
+      <Group
+         location = "group:01"
+         name = "01">
+         <FileRef
+            location = "group:1_1.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_10.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_11.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_12.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_15.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_2.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_3.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_34.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_5.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_6.playground">
+         </FileRef>
+         <FileRef
+            location = "group:1_9.playground">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:02"
+         name = "02">
+         <FileRef
+            location = "group:2_1.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_17.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_23.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_28.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_29.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_31.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_32.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_33.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_4.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_44-2_51.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_59.playground">
+         </FileRef>
+         <FileRef
+            location = "group:2_61.playground">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
-      location = "group:SICPUtils/SICPUtils.xcodeproj">
+      location = "group:README.md">
    </FileRef>
 </Workspace>
