@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B5395CAA1CBE83E6008BBE16 /* SICPUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B5395CA91CBE83E6008BBE16 /* SICPUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5EFA1CC1CBF367600DA3BFF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EFA1CB1CBF367600DA3BFF /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B5395CA61CBE83E6008BBE16 /* SICPUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SICPUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5395CA91CBE83E6008BBE16 /* SICPUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SICPUtils.h; sourceTree = "<group>"; };
 		B5395CAB1CBE83E6008BBE16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5EFA1CB1CBF367600DA3BFF /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				B5395CA91CBE83E6008BBE16 /* SICPUtils.h */,
 				B5395CAB1CBE83E6008BBE16 /* Info.plist */,
+				B5EFA1CB1CBF367600DA3BFF /* List.swift */,
 			);
 			path = SICPUtils;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EFA1CC1CBF367600DA3BFF /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
