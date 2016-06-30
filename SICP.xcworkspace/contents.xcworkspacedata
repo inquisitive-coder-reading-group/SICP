@@ -42,6 +42,9 @@
          location = "group:02"
          name = "02">
          <FileRef
+            location = "group:2_61.playground">
+         </FileRef>
+         <FileRef
             location = "group:2_1.playground">
          </FileRef>
          <FileRef
