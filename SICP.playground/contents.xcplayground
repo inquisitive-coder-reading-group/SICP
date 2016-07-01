@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios'>
+    <pages>
+        <page name='1.2'/>
+        <page name='1.3'/>
+        <page name='1.5'/>
+        <page name='1.6'/>
+        <page name='1.9'/>
+        <page name='1.10'/>
+        <page name='1.11'/>
+        <page name='1.12'/>
+        <page name='1.15'/>
+        <page name='1.34'/>
+        <page name='2.1'/>
+        <page name='2.4'/>
+        <page name='2.17'/>
+        <page name='2.23'/>
+        <page name='2.28'/>
+        <page name='2.29'/>
+        <page name='2.32'/>
+        <page name='2.44-2.51'/>
+        <page name='2.59'/>
+    </pages>
+</playground>
