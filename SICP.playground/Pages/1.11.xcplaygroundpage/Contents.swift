@@ -4,7 +4,7 @@
 
 // RECURSIVE
 
-func fRecursive(n: Int) -> Int {
+func fRecursive(_ n: Int) -> Int {
     switch n {
     case n where n < 3:
         return n
@@ -17,7 +17,7 @@ func fRecursive(n: Int) -> Int {
 
 // ITERATIVE
 
-func fIterative(n: Int, i: Int, j: Int, count: Int) -> Int {
+func fIterative(_ n: Int, i: Int, j: Int, count: Int) -> Int {
     if count == 0 {
         return n
     }

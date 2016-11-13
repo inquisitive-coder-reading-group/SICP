@@ -22,7 +22,8 @@ func fringe<T>(tree: Tree<T>) -> [T] {
     case .Empty:
         return []
     case .Node(let left, let value, let right):
-        return [value] + fringe(left) + fringe(right)
+        let values: [T] = [value]
+        return values + fringe(tree: left) + fringe(tree: right)
     }
 }
 

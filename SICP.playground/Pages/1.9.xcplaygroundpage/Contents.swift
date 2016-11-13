@@ -25,7 +25,7 @@ extension Int {
  (inc (+ (dec a) b))))
  */
 
-func aPlusB(a: Int, b: Int) -> Int {
+func aPlusB(_ a: Int, b: Int) -> Int {
     return a == 0 ? b : (aPlusB(a.dec(), b: b)).inc()
 }
 
@@ -52,7 +52,7 @@ aPlusB(4, b: 5)
 
 // ITERATIVE
 
-func aPlusB_(a: Int, b: Int) -> Int {
+func aPlusB_(_ a: Int, b: Int) -> Int {
     return a == 0 ? b : aPlusB_(a.dec(), b: b.inc())
 }
 

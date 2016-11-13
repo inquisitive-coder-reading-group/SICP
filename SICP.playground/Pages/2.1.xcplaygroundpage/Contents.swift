@@ -13,25 +13,25 @@ struct Cons<T> {
 
 }
 
-func numer<T>(x: Cons<T>) -> T { return x.car }
+func numer<T>(_ x: Cons<T>) -> T { return x.car }
 
-func denom<T>(x: Cons<T>) -> T { return x.cdr }
+func denom<T>(_ x: Cons<T>) -> T { return x.cdr }
 
-func printRat<T>(x: Cons<T>) -> Void {
+func printRat<T>(_ x: Cons<T>) -> Void {
     print("\n")
     print("\(numer(x))")
     print("/")
     print("\(denom(x))")
 }
 
-func gcd(x: Cons<Int>) -> Int {
+func gcd(_ x: Cons<Int>) -> Int {
     if x.cdr == 0 {
         return x.car
     }
     return gcd(Cons(car: x.cdr, cdr: x.car % x.cdr))
 }
 
-func makeRat(n: Int, d: Int) -> Cons<Int> {
+func makeRat(_ n: Int, d: Int) -> Cons<Int> {
 
     let g = gcd(Cons(car: n, cdr: d))
 

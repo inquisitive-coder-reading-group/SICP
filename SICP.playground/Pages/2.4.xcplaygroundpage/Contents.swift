@@ -22,15 +22,15 @@
 
  */
 
-func cons<T, U>(a: T, b: U) -> (T, U) {
+func cons<T, U>(_ a: T, b: U) -> (T, U) {
     return (a, b)
 }
 
-func car<T, U>(x: (T, U)) -> T {
+func car<T, U>(_ x: (T, U)) -> T {
     return x.0
 }
 
-func cdr<T, U>(x: (T, U)) -> U {
+func cdr<T, U>(_ x: (T, U)) -> U {
     return x.1
 }
 

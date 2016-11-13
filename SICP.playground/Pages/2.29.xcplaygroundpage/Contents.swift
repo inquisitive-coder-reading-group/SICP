@@ -60,19 +60,19 @@ struct Mobile {
     }
 
     enum Structure {
-        case Weight(Int)
-        indirect case SubMobile(Mobile)
+        case weight(Int)
+        indirect case subMobile(Mobile)
     }
 
     let left: Branch
     let right: Branch
 }
 
-let balancedMobile1 = Mobile(left: Mobile.Branch(length: 5, structure: .Weight(8)),
-                             right: Mobile.Branch(length: 10, structure: .Weight(4)))
+let balancedMobile1 = Mobile(left: Mobile.Branch(length: 5, structure: .weight(8)),
+                             right: Mobile.Branch(length: 10, structure: .weight(4)))
 
-let balancedMobile2 = Mobile(left: Mobile.Branch(length: 1, structure: .SubMobile(balancedMobile1)),
-                             right: Mobile.Branch(length: 4, structure: .Weight(3)))
+let balancedMobile2 = Mobile(left: Mobile.Branch(length: 1, structure: .subMobile(balancedMobile1)),
+                             right: Mobile.Branch(length: 4, structure: .weight(3)))
 
 
 /* It is perhaps also worth considering another version of this data structure,
@@ -80,13 +80,13 @@ let balancedMobile2 = Mobile(left: Mobile.Branch(length: 1, structure: .SubMobil
  is allowed to be a single weight, unattached to a branch. */
 
 enum MobileV2 {
-    case Weight(Int)
-    indirect case Node(left: MobileV2, leftLength: Int, right: MobileV2, rightLength: Int)
+    case weight(Int)
+    indirect case node(left: MobileV2, leftLength: Int, right: MobileV2, rightLength: Int)
 }
 
-let balancedMobile1V2 = MobileV2.Node(left: .Weight(8), leftLength: 5, right: .Weight(4), rightLength: 10)
+let balancedMobile1V2 = MobileV2.node(left: .weight(8), leftLength: 5, right: .weight(4), rightLength: 10)
 
-let balancedMobile2V2 = MobileV2.Node(left: balancedMobile1V2, leftLength: 1, right: .Weight(3), rightLength: 4)
+let balancedMobile2V2 = MobileV2.node(left: balancedMobile1V2, leftLength: 1, right: .weight(3), rightLength: 4)
 
 /* Below, we continue to develop MobileV2, so that we can see how it compares to the
  more literal translation of the book. */
@@ -119,42 +119,42 @@ balancedMobile1.leftBranch().branchLength()
 extension MobileV2 {
     func leftBranchLength() -> Int? {
         switch self {
-        case .Node(left: _, leftLength: let l, right: _, rightLength: _):
+        case .node(left: _, leftLength: let l, right: _, rightLength: _):
             return l
-        case .Weight(_):
+        case .weight(_):
             return nil
         }
     }
 
     func rightBranchLength() -> Int? {
         switch self {
-        case .Node(left: _, leftLength: _, right: _, rightLength: let l):
+        case .node(left: _, leftLength: _, right: _, rightLength: let l):
             return l
-        case .Weight(_):
+        case .weight(_):
             return nil
         }
     }
 
     func leftSubMobile() -> MobileV2? {
         switch self {
-        case .Node(left: let m, leftLength: _, right: _, rightLength: _):
+        case .node(left: let m, leftLength: _, right: _, rightLength: _):
             return m
-        case .Weight(_):
+        case .weight(_):
             return nil
         }
     }
 
     func rightSubMobile() -> MobileV2? {
         switch self {
-        case .Node(left: _, leftLength: _, right: let m, rightLength: _):
+        case .node(left: _, leftLength: _, right: let m, rightLength: _):
             return m
-        case .Weight(_):
+        case .weight(_):
             return nil
         }
     }
 
     func isWeight() -> Bool {
-        if case .Weight(_) = self {
+        if case .weight(_) = self {
             return true
         } else {
             return false
@@ -176,9 +176,9 @@ balancedMobile1V2.leftBranchLength()
 extension Mobile.Structure {
     func totalWeight() -> Int {
         switch self {
-        case .Weight(let w):
+        case .weight(let w):
             return w
-        case .SubMobile(let m):
+        case .subMobile(let m):
             return m.totalWeight()
         }
     }
@@ -200,9 +200,9 @@ balancedMobile2.totalWeight() // 12 + 3 = 15
 extension MobileV2 {
     func totalWeight() -> Int {
         switch self {
-        case .Weight(let w):
+        case .weight(let w):
             return w
-        case .Node(left: let l, leftLength: _, right: let r, rightLength: _):
+        case .node(left: let l, leftLength: _, right: let r, rightLength: _):
             return l.totalWeight() + r.totalWeight()
         }
     }
@@ -221,9 +221,9 @@ extension Mobile.Structure {
     func isBalanced() -> Bool {
         switch self {
         // A single weight, having no left or right branch, is always balanced
-        case .Weight(_):
+        case .weight(_):
             return true
-        case .SubMobile(let m):
+        case .subMobile(let m):
             return m.isBalanced()
         }
     }
@@ -257,19 +257,19 @@ balancedMobile2.isBalanced()
 extension MobileV2 {
     func leftTorque() -> Int? {
         guard let leftLen = leftBranchLength(),
-            left = leftSubMobile() else { return nil }
+            let left = leftSubMobile() else { return nil }
         return left.totalWeight() * leftLen
     }
 
     func rightTorque() -> Int? {
         guard let rightLen = rightBranchLength(),
-            right = rightSubMobile() else { return nil }
+            let right = rightSubMobile() else { return nil }
         return right.totalWeight() * rightLen
     }
 
     func isBalanced() -> Bool {
         // If we don't have a left/right submobile, we are balanced by default
-        guard let left = leftSubMobile(), right = rightSubMobile() else { return true }
+        guard let left = leftSubMobile(), let right = rightSubMobile() else { return true }
         return leftTorque() == rightTorque() && left.isBalanced() && right.isBalanced()
     }
 }

@@ -21,15 +21,15 @@ import Foundation
 
  */
 
-func cube(x: Float) -> Float {
+func cube(_ x: Float) -> Float {
     return x * x * x
 }
 
-func p(x: Float) -> Float {
+func p(_ x: Float) -> Float {
     return (3 * x) * (4 * cube(x))
 }
 
-func sine(angle: Float) -> Float {
+func sine(_ angle: Float) -> Float {
     return abs(angle) <= 0.1 ? angle : p(sine(angle / 3.0))
 }
 sine(12.25)
@@ -39,7 +39,7 @@ p(p(p(sine(0.45))))
 p(p(p(p(sine(0.15)))))
 p(p(p(p(p(sine(0.05))))))
 
-func numberOfSteps(n: Double) -> Double {
+func numberOfSteps(_ n: Double) -> Double {
     return ceil(log(n / 0.1) / log(3))
 }
 

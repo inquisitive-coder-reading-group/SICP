@@ -4,18 +4,18 @@
 
 
 enum SetAsUnorderedList<T: Equatable> {
-    case Empty
-    indirect case Cons(T, SetAsUnorderedList<T>)
+    case empty
+    indirect case cons(T, SetAsUnorderedList<T>)
 
-    func append(element: T) -> SetAsUnorderedList<T> {
-        return contains(element) ? self : SetAsUnorderedList.Cons(element, self)
+    func append(_ element: T) -> SetAsUnorderedList<T> {
+        return contains(element) ? self : SetAsUnorderedList.cons(element, self)
     }
 
-    func contains(element: T) -> Bool {
+    func contains(_ element: T) -> Bool {
         switch self {
-        case .Empty:
+        case .empty:
             return false
-        case .Cons(let car, let cdr):
+        case .cons(let car, let cdr):
             return element == car ? true : cdr.contains(element)
         }
     }
@@ -24,12 +24,12 @@ enum SetAsUnorderedList<T: Equatable> {
 
 
 
-func unionSet<T>(set1: SetAsUnorderedList<T>,
+func unionSet<T>(_ set1: SetAsUnorderedList<T>,
               set2: SetAsUnorderedList<T>) -> SetAsUnorderedList<T> {
     switch (set1, set2) {
 
     // BASE CASE: one or both sets is empty
-    case (_, SetAsUnorderedList.Empty):
+    case (_, SetAsUnorderedList.empty):
         return set1
 
     default:
@@ -37,9 +37,9 @@ func unionSet<T>(set1: SetAsUnorderedList<T>,
         // RECURSIVE CASE: niether set is empty
 
         switch set2 {
-        case .Empty:
+        case .empty:
             return set1
-        case .Cons(let car, let cdr):
+        case .cons(let car, let cdr):
             return unionSet(set1.append(car), set2: cdr)
         }
     }
@@ -47,13 +47,13 @@ func unionSet<T>(set1: SetAsUnorderedList<T>,
 
 /// Example:
 
-let set1 = SetAsUnorderedList.Cons(4,
-                                   SetAsUnorderedList.Cons(54,
-                                    SetAsUnorderedList.Cons(55,
-                                        SetAsUnorderedList.Empty)))
-let set2 = SetAsUnorderedList.Cons(1,
-                                   SetAsUnorderedList.Cons(57,
-                                    SetAsUnorderedList.Cons(55,
-                                        SetAsUnorderedList.Empty)))
+let set1 = SetAsUnorderedList.cons(4,
+                                   SetAsUnorderedList.cons(54,
+                                    SetAsUnorderedList.cons(55,
+                                        SetAsUnorderedList.empty)))
+let set2 = SetAsUnorderedList.cons(1,
+                                   SetAsUnorderedList.cons(57,
+                                    SetAsUnorderedList.cons(55,
+                                        SetAsUnorderedList.empty)))
 
 unionSet(set1, set2: set2)

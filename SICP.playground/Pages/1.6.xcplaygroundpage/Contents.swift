@@ -41,7 +41,7 @@
 
  - returns: whether the guess is close enough to the actual square root.
  */
-func goodEnough<T: IntegerArithmeticType where T: SignedNumberType>(guess: T, x: T) -> Bool {
+func goodEnough<T: IntegerArithmetic>(_ guess: T, x: T) -> Bool where T: SignedNumber {
     return abs((guess * guess) - x) < (0.001 as! T)
 }
 
@@ -53,7 +53,7 @@ func goodEnough<T: IntegerArithmeticType where T: SignedNumberType>(guess: T, x:
 
  - returns: a new guess as to the square root of x.
  */
-func improve<T: IntegerArithmeticType>(guess: T, x: T) -> T {
+func improve<T: IntegerArithmetic>(_ guess: T, x: T) -> T {
     return (guess + (guess / x)) / (2 as! T)
 }
 
@@ -66,7 +66,7 @@ func improve<T: IntegerArithmeticType>(guess: T, x: T) -> T {
 
  - returns: an instance of whatever type is returned from both clauses.
  */
-func newIf<T>(@autoclosure predicate: () -> Bool,
+func newIf<T>(_ predicate: @autoclosure () -> Bool,
            thenClause: () -> T,
            elseClause: () -> T) -> T {
 
@@ -87,7 +87,7 @@ func newIf<T>(@autoclosure predicate: () -> Bool,
 
  - returns: a close approximation of the square root of x.
  */
-func sqrtIter<T: IntegerArithmeticType where T: SignedNumberType>(guess: T, x: T) -> T {
+func sqrtIter<T: IntegerArithmetic>(_ guess: T, x: T) -> T where T: SignedNumber {
     return newIf(goodEnough(guess, x: x),
                  thenClause: { guess },
                  elseClause: { sqrtIter(improve(guess, x: x), x: x) })

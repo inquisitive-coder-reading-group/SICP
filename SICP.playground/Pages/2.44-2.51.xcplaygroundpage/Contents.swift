@@ -11,7 +11,7 @@ PainterView(painter: trianglePainter)
 PainterView(painter: rightSplit(trianglePainter, n: 4))
 
 // upSplit
-func upSplit1(painter: Painter, n: Int) -> Painter {
+func upSplit1(_ painter: Painter, n: Int) -> Painter {
     if n == 0 {
         return painter
     }
@@ -34,7 +34,7 @@ PainterView(painter: upSplit1(trianglePainter, n: 4))
 //: (define up-split (split below beside))
 //: ```
 //: produces procedures `right-split` and `up-split` with the same behaviors as the ones already defined.
-func split(painter: Painter, combiner1 c1: PainterCombiner, combiner2 c2: PainterCombiner, n: Int) -> Painter {
+func split(_ painter: Painter, combiner1 c1: PainterCombiner, combiner2 c2: PainterCombiner, n: Int) -> Painter {
     if n == 0 {
         return painter
     }
@@ -48,19 +48,19 @@ func split(painter: Painter, combiner1 c1: PainterCombiner, combiner2 c2: Painte
     }
 }
 
-func rightSplit2(painter: Painter, n: Int) -> Painter {
+func rightSplit2(_ painter: Painter, n: Int) -> Painter {
     return split(painter, combiner1: beside, combiner2: below, n: n)
 }
 
 PainterView(painter: rightSplit2(trianglePainter, n: 4))
 
-func flip(combiner: PainterCombiner) -> PainterCombiner {
+func flip(_ combiner: PainterCombiner) -> PainterCombiner {
     return {
         combiner($1, $0)
     }
 }
 
-func upSplit2(painter: Painter, n: Int) -> Painter {
+func upSplit2(_ painter: Painter, n: Int) -> Painter {
     return split(painter, combiner1: flip(below), combiner2: beside, n: n)
 }
 
@@ -113,7 +113,7 @@ public let diamondPainter = segmentsToPainter([
 PainterView(painter: diamondPainter)
 //: ## Exercise 2.50
 //: Define the transformation `flip-horiz`, which flips painters horizontally, and transformations that rotate painters counterclockwise by 180 degrees and 270 degrees.
-func flipHoriz1(painter: Painter) -> Painter {
+func flipHoriz1(_ painter: Painter) -> Painter {
     return transformPainter(
         painter,
         origin: Vector(1, 0),
@@ -123,7 +123,7 @@ func flipHoriz1(painter: Painter) -> Painter {
 
 PainterView(painter: flipHoriz1(trianglePainter))
 
-func rotate180(painter: Painter) -> Painter {
+func rotate180(_ painter: Painter) -> Painter {
     return transformPainter(
         painter,
         origin: Vector(0, 1),
@@ -133,7 +133,7 @@ func rotate180(painter: Painter) -> Painter {
 
 PainterView(painter: rotate180(trianglePainter))
 
-func rotate270(painter: Painter) -> Painter {
+func rotate270(_ painter: Painter) -> Painter {
     return transformPainter(
         painter,
         origin: Vector(0, 1),
@@ -143,7 +143,7 @@ func rotate270(painter: Painter) -> Painter {
 
 PainterView(painter: rotate270(trianglePainter))
 
-func rotate90(painter: Painter) -> Painter {
+func rotate90(_ painter: Painter) -> Painter {
     return transformPainter(
         painter,
         origin: Vector(1, 0),
@@ -155,7 +155,7 @@ PainterView(painter: rotate90(trianglePainter))
 
 //: ## Exercise 2.51
 //: Define the `below` operation for painters. `Below` takes two painters as arguments. The resulting painter, given a frame, draws with the first painter in the bottom of the frame and with the second painter in the top. Define `below` in two different ways—first by writing a procedure that is analogous to the `beside` procedure given above, and again in terms of beside and suitable rotation operations (from Exercise 2.50).
-func below1(top top: Painter, bottom: Painter) -> Painter {
+func below1(_ top: Painter, bottom: Painter) -> Painter {
     let newTop = transformPainter(
         top,
         origin: Vector(0, 0.5),
@@ -173,7 +173,7 @@ func below1(top top: Painter, bottom: Painter) -> Painter {
 
 PainterView(painter: below1(top: diamondPainter, bottom: trianglePainter))
 
-func below2(top top: Painter, bottom: Painter) -> Painter {
+func below2(_ top: Painter, bottom: Painter) -> Painter {
     return rotate270(beside(left: rotate90(top), right: rotate90(bottom)))
 }
 

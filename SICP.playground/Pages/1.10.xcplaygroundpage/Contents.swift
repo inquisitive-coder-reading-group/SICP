@@ -29,7 +29,7 @@
  Give concise mathematical definitions for the functions computed by the procedures f, g, and h for positive integer values of n. For example, (k n) computes 5n2.
  */
 
-func A(x: Int, y:Int) -> Int {
+func A(_ x: Int, y:Int) -> Int {
     switch (x, y) {
     case let (_, y) where y == 0:
         return y

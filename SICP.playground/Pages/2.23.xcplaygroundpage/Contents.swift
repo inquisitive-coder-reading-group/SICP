@@ -11,11 +11,11 @@
  */
 
 enum List<T> {
-    case Empty
-    indirect case Cons(T, List<T>)
+    case empty
+    indirect case cons(T, List<T>)
 }
 
-func forEach<T>(withTransform transform: T throws -> Bool, list: List<T>) -> Void {
+func forEach<T>(withTransform transform: (T) throws -> Bool, list: List<T>) -> Void {
     do {
         switch list {
         case .Empty:

@@ -11,17 +11,17 @@
  */
 
 enum List<T> {
-    case Empty
-    indirect case Cons(T, List<T>)
+    case empty
+    indirect case cons(T, List<T>)
 }
 
-func lastPair<T>(list: List<T>) -> T? {
+func lastPair<T>(_ list: List<T>) -> T? {
     switch list {
-    case .Empty:
+    case .empty:
         return nil
-    case .Cons(let car, let cdr):
+    case .cons(let car, let cdr):
         switch cdr {
-        case .Empty:
+        case .empty:
             return car
         default:
             return lastPair(cdr)

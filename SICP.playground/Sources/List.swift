@@ -1,5 +1,5 @@
 
 public enum List<T> {
-    case Empty
-    indirect case Cons(T, List<T>)
+    case empty
+    indirect case cons(T, List<T>)
 }

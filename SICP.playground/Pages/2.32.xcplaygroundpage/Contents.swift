@@ -8,21 +8,21 @@
 
 // We must first define a List type, with some basic operations like map and append
 enum List<T> {
-    case Empty
-    indirect case Cons(T, List<T>)
+    case empty
+    indirect case cons(T, List<T>)
 
-    func map<U>(transform: T -> U) -> List<U> {
+    func map<U>(_ transform: (T) -> U) -> List<U> {
         switch self {
-        case .Empty:
+        case .empty:
             return .Empty
         case .Cons(let first, let rest):
             return .Cons(transform(first), rest.map(transform))
         }
     }
 
-    func append(other: List<T>) -> List<T> {
+    func append(_ other: List<T>) -> List<T> {
         switch self {
-        case .Empty:
+        case .empty:
             return other
         case .Cons(let first, let rest):
             return .Cons(first, rest.append(other))
@@ -31,12 +31,12 @@ enum List<T> {
 
     func subsets() -> List<List<T>>{
         switch self {
-        case .Empty:
+        case .empty:
             return .Cons(.Empty, .Empty)
         case .Cons(let first, let rest):
             // This next line is the real answer to the exercise: it is the closure that should replace
             // (??) in the original question. Everything else is Swift boilerplate!
-            let addFirstElem: List<T> -> List<T> = { return .Cons(first, $0) }
+            let addFirstElem: (List<T>) -> List<T> = { return .Cons(first, $0) }
 
             let subsetsWithoutFirstElem = rest.subsets()
             let subsetsWithFirstElem = subsetsWithoutFirstElem.map(addFirstElem)
