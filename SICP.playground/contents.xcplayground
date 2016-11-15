@@ -20,5 +20,6 @@
         <page name='2.32'/>
         <page name='2.44-2.51'/>
         <page name='2.59'/>
+        <page name='3.7'/>
     </pages>
 </playground>
